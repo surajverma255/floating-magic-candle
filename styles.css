@@ -752,12 +752,23 @@ p {
 }
 
 .review-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(280px, 360px);
+  gap: 16px;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scroll-snap-type: inline mandatory;
+  scrollbar-color: rgba(246, 199, 102, 0.42) rgba(255, 241, 194, 0.08);
+  padding: 4px 4px 18px;
+  margin-inline: -4px;
 }
 
 .review-card {
+  min-height: 245px;
   padding: 24px;
   border-radius: 8px;
+  scroll-snap-align: start;
 }
 
 .stars {
@@ -1036,6 +1047,11 @@ p {
   .desire-grid,
   .review-grid {
     grid-template-columns: 1fr;
+  }
+
+  .review-grid {
+    grid-template-columns: none;
+    grid-auto-columns: minmax(276px, 84vw);
   }
 
   .desire-grid article {
